@@ -2,5 +2,4 @@
   tag: master
   service: dind
   steps:
-    - command: /install-kubeadm.sh
-    - command: /push-images.sh
+    - command: /make-images.sh
