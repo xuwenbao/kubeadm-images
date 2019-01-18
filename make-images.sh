@@ -1,5 +1,7 @@
 #!/bin/sh
 
+docker version
+
 cat <<EOF > /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
@@ -18,12 +20,12 @@ sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
 yum install -y kubeadm --disableexcludes=kubernetes
 
 kubeadm config images list 2>/dev/null 1>images.txt
-echo ${password} | docker login --username ${username} --password-stdin
+echo "${password}" | docker login --username "${username}" --password-stdin
 
 for line in $(cat images.txt)
 do
     echo "Handing image: ${line}"
-    new="xuwenbao/"`echo ${line} | cut -d "/" -f 1`
+    new="xuwenbao/"`echo ${line} | cut -d "/" -f 2`
     echo "New image: ${new}"
 
     docker pull ${line}
