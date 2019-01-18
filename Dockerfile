@@ -2,7 +2,7 @@ FROM fedora:22
 
 # Install docker
 RUN dnf -y update && dnf -y install dnf-plugins-core && \
-    dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo \
+    dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo && \
     dnf -y install docker-ce && \
     dnf clean all
 
