@@ -25,7 +25,7 @@ echo "${password}" | docker login --username "${username}" --password-stdin ${se
 for line in $(cat images.txt)
 do
     echo "Handing image: ${line}"
-    new="xuwenbao/"`echo ${line} | cut -d "/" -f 2`
+    new="registry.cn-hangzhou.aliyuncs.com/xuwenbao/"`echo ${line} | cut -d "/" -f 2`
     echo "New image: ${new}"
 
     docker pull ${line}
