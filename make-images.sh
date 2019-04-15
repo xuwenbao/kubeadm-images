@@ -19,7 +19,7 @@ sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
 
 yum install -y kubeadm --disableexcludes=kubernetes
 
-kubeadm config images list 2>/dev/null 1>images.txt
+kubeadm config images list 2>/dev/stderr 1>images.txt
 
 echo "---- Origin images ----"
 cat images.txt
