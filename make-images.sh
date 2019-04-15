@@ -20,6 +20,12 @@ sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
 yum install -y kubeadm --disableexcludes=kubernetes
 
 kubeadm config images list 2>/dev/null 1>images.txt
+
+echo "---- Origin images ----"
+cat images.txt
+echo "-----------------------"
+
+
 echo "${password}" | docker login --username "${username}" --password-stdin ${server}
 
 for line in $(cat images.txt)
