@@ -19,7 +19,7 @@ EOF
 setenforce 0
 sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
 
-yum clean all && rpm --rebuilddb && yum install -y kubeadm --disableexcludes=kubernetes
+rm -f /var/lib/rpm/__db.* && rpm --rebuilddb && yum clean all && yum install -y kubeadm --disableexcludes=kubernetes
 
 kubeadm config images list 2>/dev/stderr 1>images.txt
 
