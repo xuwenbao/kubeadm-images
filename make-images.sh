@@ -19,7 +19,7 @@ EOF
 setenforce 0
 sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
 
-yum install -y kubeadm-1.14.0.el7.x86_64 --disableexcludes=kubernetes
+dnf --refresh upgrade && dnf install -y kubeadm --disableexcludes=kubernetes
 
 kubeadm config images list 2>/dev/stderr 1>images.txt
 
